@@ -3,3 +3,8 @@ export enum CardType {
   STUDENT,
   CITY,
 }
+
+export enum CardTitle {
+  NAME = 'name',
+  FIRST_NAME = 'firstName',
+}

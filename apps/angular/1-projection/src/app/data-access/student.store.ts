@@ -1,21 +1,22 @@
 import { Injectable, signal } from '@angular/core';
+import { IStore } from '../core/interfaces/store.interface';
 import { Student } from '../model/student.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class StudentStore {
-  public students = signal<Student[]>([]);
+export class StudentStore implements IStore<Student> {
+  public items = signal<Student[]>([]);
 
   addAll(students: Student[]) {
-    this.students.set(students);
+    this.items.set(students);
   }
 
   addOne(student: Student) {
-    this.students.set([...this.students(), student]);
+    this.items.set([...this.items(), student]);
   }
 
   deleteOne(id: number) {
-    this.students.set(this.students().filter((s) => s.id !== id));
+    this.items.set(this.items().filter((s) => s.id !== id));
   }
 }
